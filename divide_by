@@ -1,0 +1,24 @@
+def divide_by(dividers, num_to_div):
+    """
+    :param dividers:int numbers use as dividers
+    :param num_to_div:int numbers to divide
+    :return:list numbers divide by all dividers
+    """
+    if not dividers or not num_to_div: return None
+    if 0 in dividers or 0 in num_to_div: return None
+    if not all(isinstance(item, int) for item in dividers): return None
+    if not all(isinstance(item, int) for item in num_to_div): return None
+    div_numbers = num_to_div[:]
+    for num in num_to_div:
+        for div in dividers:
+            if not num % div == 0:
+                div_numbers.remove(num)
+                break
+    return div_numbers
+
+
+if __name__ == '__main__':
+    lst_dividers = [2, 5]
+    lst_num_to_div = [10, 20, 21]
+    lst_test = divide_by(lst_dividers, lst_num_to_div)
+    print(lst_test)
